@@ -1,8 +1,12 @@
 # Python
 backend/venv/
-__pycache__/
+backend/__pycache__/
+**/__pycache__/
 *.pyc
 .env
+
+# Database (if using SQLite)
+*.db
 
 # Node
 frontend/node_modules/
