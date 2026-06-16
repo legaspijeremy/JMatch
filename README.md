@@ -4,7 +4,7 @@ AI-powered resume analysis and application tracking platform built with React, F
 
 ## Overview
 
-JMatch helps students and job seekers improve their resumes by providing AI-driven feedback, resume scoring, and personalized recommendations. The platform also includes an internship application tracker to help users manage their job search process in one place.
+JMatch helps students and job seekers improve their resumes by providing AI-driven feedback, resume scoring, and personalized recommendations. The platform also includes an application tracker to help users manage their job search process in one place.
 
 ## Features
 
