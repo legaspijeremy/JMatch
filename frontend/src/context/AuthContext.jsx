@@ -8,23 +8,43 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('jmatch_token');
+    const loadUser = async () => {
+      const token = localStorage.getItem('jmatch_token');
 
-    if (token) {
-      setUser({});
-    }
+      if (!token) {
+        setLoading(false);
+        return;
+      }
 
-    setLoading(false);
+      try {
+        const response = await authAPI.me();
+        setUser(response.data);
+      } catch (error) {
+        console.error('Failed to load user:', error);
+
+        localStorage.removeItem('jmatch_token');
+        setUser(null);
+      }
+
+      setLoading(false);
+    };
+
+    loadUser();
   }, []);
 
   const login = async (email, password) => {
-    const response = await authAPI.login({ email, password });
+    const response = await authAPI.login({
+      email,
+      password,
+    });
 
     const { access_token } = response.data;
 
     localStorage.setItem('jmatch_token', access_token);
 
-    setUser({});
+    const userResponse = await authAPI.me();
+
+    setUser(userResponse.data);
 
     return response.data;
   };
@@ -47,7 +67,15 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        loading,
+        login,
+        register,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
