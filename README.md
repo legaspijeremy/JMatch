@@ -1,6 +1,6 @@
 # JMatch
 
-AI-powered resume analysis and internship tracking platform built with React, FastAPI, and PostgreSQL.
+AI-powered resume analysis and application tracking platform built with React, FastAPI, and PostgreSQL.
 
 ## Overview
 
@@ -133,7 +133,7 @@ uvicorn app.main:app --reload
 
 ## Author
 
-Jeremy Legaspi
+Norman Jeremy Legaspi
 
 Computer Science Student | Aspiring Software Engineer
 
